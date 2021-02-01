@@ -1,9 +1,9 @@
 import type { FC } from "react";
 import { useCallback, useState } from "react";
-import { Card, Container, LastNameForm } from "../src/components";
+import { Card, Container } from "../src/components";
 import styles from "./home.module.scss";
-import type { ILastnameTransitionInfo } from "../src/lastname-info";
-import { LastnameInfoTransitionResultsCard, TransitLastname } from "../src/lastname-info";
+import type { ILastnameTransitionInfo } from "../src/lastname";
+import { LastNameForm, LastnameInfoTransitionResultsCard, LastnameTransit } from "../src/lastname";
 
 const Home: FC = () => {
   const [lastNameInfoArray, setLastNameInfoArray] = useState<Array<ILastnameTransitionInfo> | null>(null);
@@ -12,7 +12,7 @@ const Home: FC = () => {
     console.debug(data);
 
     if (typeof data === "string" && data) {
-      setLastNameInfoArray([TransitLastname(data)]);
+      setLastNameInfoArray([LastnameTransit(data)]);
     } else {
       setLastNameInfoArray(null);
     }

@@ -4,7 +4,7 @@ import type { ILastnameTransitionInfo } from "../lastname-info.interface";
 import { useCallback, useMemo } from "react";
 import type { ILastnameInfo } from "../lastname-info.interface";
 import { Sex } from "../lastname-info.interface";
-import styles from "./lastname-info-transition-results-card.module.scss";
+import styles from "./lastname-transition-results-card.module.scss";
 
 const LastnameInfoTransitionResultsCard: FC<{
   items: ILastnameTransitionInfo[];

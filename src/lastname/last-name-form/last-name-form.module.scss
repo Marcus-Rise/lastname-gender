@@ -1,3 +1,5 @@
+@use "../../styles/grid" as g;
+
 .container {
   display: grid;
   grid-template-areas:
@@ -11,6 +13,16 @@
   grid-template-columns: 1fr 1fr;
 
   max-width: 500px;
+
+  @include g.sm {
+    grid-template-areas:
+          "lastname"
+          "span"
+          "file"
+          "submit";
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
 }
 
 .inputText {

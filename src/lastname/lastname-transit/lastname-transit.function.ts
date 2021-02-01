@@ -2,7 +2,7 @@ import type { ILastnameInfo, ILastnameTransitionInfo } from "../lastname-info.in
 import { Sex } from "../lastname-info.interface";
 import { getLastnameGender } from "lvovich";
 
-const TransitLastname = (lastname: string): ILastnameTransitionInfo => {
+const LastnameTransit = (lastname: string): ILastnameTransitionInfo => {
   let before: ILastnameInfo;
   let after: ILastnameInfo;
   const sex = getLastnameGender(lastname);
@@ -77,4 +77,4 @@ const TransitLastname = (lastname: string): ILastnameTransitionInfo => {
   };
 };
 
-export { TransitLastname };
+export { LastnameTransit };

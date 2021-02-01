@@ -1,31 +1,31 @@
-import { TransitLastname } from "./transit-lastname.function";
+import { LastnameTransit } from "./lastname-transit.function";
 import { Sex } from "../lastname-info.interface";
 
-describe("TransitLastname", () => {
+describe("LastnameTransit", () => {
   describe("Male to female", () => {
     test("Иванов -> Иванова", () => {
-      const transitionInfo = TransitLastname("Иванов");
+      const transitionInfo = LastnameTransit("Иванов");
 
       expect(transitionInfo.before.sex).toEqual(Sex.Male);
       expect(transitionInfo.after.sex).toEqual(Sex.Female);
       expect(transitionInfo.after.value).toEqual("Иванова");
     });
     test("Лазинский -> Лазинская", () => {
-      const transitionInfo = TransitLastname("Лазинский");
+      const transitionInfo = LastnameTransit("Лазинский");
 
       expect(transitionInfo.before.sex).toEqual(Sex.Male);
       expect(transitionInfo.after.sex).toEqual(Sex.Female);
       expect(transitionInfo.after.value).toEqual("Лазинская");
     });
     test("Цветовской -> Цветовская", () => {
-      const transitionInfo = TransitLastname("Цветовской");
+      const transitionInfo = LastnameTransit("Цветовской");
 
       expect(transitionInfo.before.sex).toEqual(Sex.Male);
       expect(transitionInfo.after.sex).toEqual(Sex.Female);
       expect(transitionInfo.after.value).toEqual("Цветовская");
     });
     test("Глинской -> Глинская", () => {
-      const transitionInfo = TransitLastname("Глинской");
+      const transitionInfo = LastnameTransit("Глинской");
 
       expect(transitionInfo.before.sex).toEqual(Sex.Male);
       expect(transitionInfo.after.sex).toEqual(Sex.Female);
@@ -34,21 +34,21 @@ describe("TransitLastname", () => {
   });
   describe("Female to male", () => {
     test("Иванова -> Иванов", () => {
-      const transitionInfo = TransitLastname("Иванова");
+      const transitionInfo = LastnameTransit("Иванова");
 
       expect(transitionInfo.before.sex).toEqual(Sex.Female);
       expect(transitionInfo.after.sex).toEqual(Sex.Male);
       expect(transitionInfo.after.value).toEqual("Иванов");
     });
     test("Лазинская -> Лазинской", () => {
-      const transitionInfo = TransitLastname("Лазинская");
+      const transitionInfo = LastnameTransit("Лазинская");
 
       expect(transitionInfo.before.sex).toEqual(Sex.Female);
       expect(transitionInfo.after.sex).toEqual(Sex.Male);
       expect(transitionInfo.after.value).toEqual("Лазинской");
     });
     test("Цветовская -> Цветовской", () => {
-      const transitionInfo = TransitLastname("Цветовская");
+      const transitionInfo = LastnameTransit("Цветовская");
 
       expect(transitionInfo.before.sex).toEqual(Sex.Female);
       expect(transitionInfo.after.sex).toEqual(Sex.Male);
@@ -57,7 +57,7 @@ describe("TransitLastname", () => {
   });
   describe("no diff", () => {
     test("Городец -> Городец", () => {
-      const transitionInfo = TransitLastname("Городец");
+      const transitionInfo = LastnameTransit("Городец");
 
       expect(transitionInfo.before.sex).toEqual(Sex.Other);
       expect(transitionInfo.after.sex).toEqual(Sex.Other);

@@ -1,6 +1,12 @@
+@use "../../styles/grid" as g;
+
 .root {
   max-width: 80%;
   margin: 0 auto;
+
+  @include g.sm {
+    max-width: 95%;
+  }
 }
 
 .center {
