@@ -1,3 +1,5 @@
+@use "../../styles/grid" as g;
+
 .root {
   background-color: var(--color-dark-gray);
   color: white;
@@ -6,6 +8,11 @@
   display: grid;
 
   grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  @include g.sm {
+    grid-template-columns: 1fr;
+  }
 }
 
 .source {
