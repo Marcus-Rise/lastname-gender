@@ -1,0 +1,13 @@
+.root {
+  background-color: var(--color-dark-gray);
+  color: white;
+  padding: 1rem;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+}
+
+.source {
+  text-align: right;
+}
