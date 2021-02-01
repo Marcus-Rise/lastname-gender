@@ -1,0 +1,14 @@
+.root {
+  background: var(--color-accent);
+  border: 2px solid var(--color-dark-gray);
+  box-sizing: border-box;
+  border-radius: 50px;
+  color: black;
+  font-size: 1rem;
+
+  padding: 1rem 1.5rem;
+
+  &::placeholder {
+    color: var(--color-dark-gray);
+  }
+}

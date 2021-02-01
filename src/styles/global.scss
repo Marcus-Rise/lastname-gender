@@ -1,0 +1,19 @@
+@use "variables" as v;
+@use "typography" as t;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  --color-main: #{v.$color-main};
+  --color-dark-gray: #{v.$color-dark-gray};
+  --color-accent: #{v.$color-accent};
+}
+
+body {
+  background-color: var(--color-main);
+}
+
+* {
+  @include t.Roboto;
+
+  color: var(--color-dark-gray);
+}

@@ -1,0 +1,31 @@
+.container {
+  display: grid;
+  grid-template-areas:
+          "lastname submit"
+          "span submit"
+          "file submit";
+  align-items: center;
+  justify-items: stretch;
+  column-gap: 2rem;
+  row-gap: .5rem;
+  grid-template-columns: 1fr 1fr;
+
+  max-width: 500px;
+}
+
+.inputText {
+  grid-area: lastname;
+}
+
+.span {
+  grid-area: span;
+  text-align: center;
+}
+
+.inputFile {
+  grid-area: file;
+}
+
+.submit {
+  grid-area: submit;
+}

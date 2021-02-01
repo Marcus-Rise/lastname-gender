@@ -1,0 +1,14 @@
+.root {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.center {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.fullHeight {
+  height: 100vh;
+}
