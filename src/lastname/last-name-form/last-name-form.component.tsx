@@ -1,10 +1,8 @@
 import type { FC } from "react";
-import { Controller, useForm } from "react-hook-form";
 import { useCallback, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import styles from "./last-name-form.module.scss";
-import { InputText } from "../../components/input-text";
-import { InputFile } from "../../components/input-file";
-import { Button } from "../../components/button";
+import { Button, InputFile, InputText } from "../../components";
 
 const LastNameForm: FC<{
   onSubmit(data: string | File): void;
