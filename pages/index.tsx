@@ -11,8 +11,10 @@ const Home: FC = () => {
   const onSubmit = useCallback((data: string | File) => {
     console.debug(data);
 
-    if (typeof data === "string") {
+    if (typeof data === "string" && data) {
       setLastNameInfoArray([TransitLastname(data)]);
+    } else {
+      setLastNameInfoArray(null);
     }
   }, []);
 
