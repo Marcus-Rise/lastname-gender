@@ -6,3 +6,32 @@
 .table {
   width: 100%;
 }
+
+.column {
+  text-align: center;
+}
+
+.paginationContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 65px);
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.paginationLink {
+  cursor: pointer;
+}
+
+.paginationLinkActive {
+  $size: 25px;
+  background-color: var(--color-main);
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  width: $size;
+  height: $size;
+}
