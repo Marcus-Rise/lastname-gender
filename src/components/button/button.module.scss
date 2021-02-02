@@ -1,16 +1,23 @@
 .root {
-  background-color: var(--color-accent);
-  border: 2px solid var(--color-dark-gray);
+  background-color: var(--color-dark-gray);
   box-sizing: border-box;
   border-radius: 50px;
   padding: 1rem 2.5rem;
   font-size: 1rem;
   cursor: pointer;
+  color: white;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
 
   &:hover {
-    background-color: #FFD88B;
+    opacity: .9;
   }
+
   &:active {
-    background-color: #E4B559;
+    outline: none;
+    box-shadow: 0 0 20px 0 rgba(34, 60, 80, 0.2) inset;
   }
 }

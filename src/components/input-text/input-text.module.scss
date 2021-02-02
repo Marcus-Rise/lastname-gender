@@ -1,5 +1,4 @@
 .root {
-  background: var(--color-accent);
   border: 2px solid var(--color-dark-gray);
   box-sizing: border-box;
   border-radius: 50px;
@@ -10,5 +9,9 @@
 
   &::placeholder {
     color: var(--color-dark-gray);
+  }
+
+  &:focus {
+    outline: none;
   }
 }
