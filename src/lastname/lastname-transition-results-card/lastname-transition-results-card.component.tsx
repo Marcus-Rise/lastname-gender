@@ -11,7 +11,7 @@ const LastnameInfoTransitionResultsCard: FC<{
   items: ILastnameTransitionInfo[];
 }> = (props) => {
   const RESULTS_PER_PAGE = 10;
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
 
   const isSingleResult = useMemo(() => props.items.length === 1, [props.items.length]);
   const title = useMemo(() => (!isSingleResult ? "Результаты" : "Результат"), [isSingleResult]);
@@ -59,7 +59,7 @@ const LastnameInfoTransitionResultsCard: FC<{
         </thead>
         <tbody>
           {filteredArrayItems.map((i, index) => (
-            <tr key={i.before.value}>
+            <tr key={index}>
               {!isSingleResult && <td className={styles.column}>{index + 1}.</td>}
               <LastnameInfoRow info={i.before} />
               {i.before !== i.after ? (
