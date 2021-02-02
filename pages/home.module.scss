@@ -1,6 +1,10 @@
 .root {
   display: grid;
+  align-items: center;
+  justify-items: center;
   grid-row-gap: 3rem;
+  height: 100%;
+  padding: 3rem 0;
 }
 
 .title {
