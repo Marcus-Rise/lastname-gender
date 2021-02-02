@@ -10,8 +10,6 @@ const Home: FC = () => {
   const [lastNameInfoArray, setLastNameInfoArray] = useState<Array<ILastnameTransitionInfo> | null>(null);
 
   const onSubmit = useCallback(async (data: string | File) => {
-    console.debug(data);
-
     if (typeof data === "string" && data) {
       setLastNameInfoArray([LastnameTransit(data)]);
     } else if (typeof data !== "string" && data) {

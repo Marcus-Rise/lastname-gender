@@ -32,21 +32,21 @@ const InputFile: FC<IProps> = (props) => {
     () =>
       files
         ? Array.from(files).map((i) => {
-            let sizeSuffix: string;
+            let size: string;
 
             if (i.size < 1000) {
-              sizeSuffix = "byte";
-            } else if (i.size < Math.pow(1000, 2)) {
-              sizeSuffix = "kb";
-            } else if (i.size < Math.pow(1000, 3)) {
-              sizeSuffix = "mb";
-            } else if (i.size < Math.pow(1000, 4)) {
-              sizeSuffix = "gb";
+              size = i.size + " byte";
+            } else if (i.size > 1000 && i.size < Math.pow(1000, 2)) {
+              size = i.size / 1000 + " kb";
+            } else if (i.size > Math.pow(1000, 2) && i.size < Math.pow(1000, 3)) {
+              size = i.size / Math.pow(1000, 2) + " mb";
+            } else if (i.size > Math.pow(1000, 3) && i.size < Math.pow(1000, 4)) {
+              size = i.size / Math.pow(1000, 3) + " gb";
             }
 
             return (
               <li key={i.name}>
-                {i.name}, {i.size} {sizeSuffix}
+                {i.name}, {size}
               </li>
             );
           })
