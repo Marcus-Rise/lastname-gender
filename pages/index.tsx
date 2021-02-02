@@ -5,16 +5,18 @@ import styles from "./home.module.scss";
 import type { ILastnameTransitionInfo } from "../src/lastname";
 import { LastNameForm, LastnameInfoTransitionResultsCard, LastnameTransit } from "../src/lastname";
 import Head from "next/head";
+import type { ILastNameFormData } from "../src/lastname/last-name-form";
 
 const Home: FC = () => {
   const [lastNameInfoArray, setLastNameInfoArray] = useState<Array<ILastnameTransitionInfo> | null>(null);
 
-  const onSubmit = useCallback(async (data: string | File) => {
+  const onSubmit = useCallback(async (data: ILastNameFormData) => {
     if (typeof data === "string" && data) {
       setLastNameInfoArray([LastnameTransit(data)]);
     } else if (typeof data !== "string" && data) {
       const formData = new FormData();
-      formData.append("file", data);
+      formData.append("file", data.file);
+      formData.append("returnFile", String(data.resultAsFile));
 
       const res = await fetch("/api/lastname-transit", {
         method: "POST",
