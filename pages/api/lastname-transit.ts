@@ -25,15 +25,17 @@ const LastnameTransitHandler: NextApiHandler<ILastnameTransitionInfo[]> = async 
 
   const form = new Form();
 
-  const files = await new Promise<IFormDataFile[]>((resolve, reject) => {
-    form.parse(req, (err, fields, files: Record<string, IFormDataFile[]>) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(files.file);
-      }
-    });
-  });
+  const { files, resultAsFile } = await new Promise<{ files: IFormDataFile[]; resultAsFile: boolean }>(
+    (resolve, reject) => {
+      form.parse(req, (err, fields: Record<string, string[]>, files: Record<string, IFormDataFile[]>) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve({ files: files.file, resultAsFile: fields.returnFile ? fields.returnFile[0] === "true" : false });
+        }
+      });
+    },
+  );
 
   const lastnames: string[] = [];
 
