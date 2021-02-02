@@ -38,10 +38,11 @@ const LastnameTransitHandler: NextApiHandler<ILastnameTransitionInfo[]> = async 
   res.json([]);
 };
 
-export const config = {
+const config = {
   api: {
     bodyParser: false,
   },
 };
 
+export { config };
 export default LastnameTransitHandler;
