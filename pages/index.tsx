@@ -9,11 +9,23 @@ import Head from "next/head";
 const Home: FC = () => {
   const [lastNameInfoArray, setLastNameInfoArray] = useState<Array<ILastnameTransitionInfo> | null>(null);
 
-  const onSubmit = useCallback((data: string | File) => {
+  const onSubmit = useCallback(async (data: string | File) => {
     console.debug(data);
 
     if (typeof data === "string" && data) {
       setLastNameInfoArray([LastnameTransit(data)]);
+    } else if (typeof data !== "string" && data) {
+      const formData = new FormData();
+      formData.append("file", data);
+
+      const res = await fetch("/api/lastname-transit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const transitions = await res.json();
+
+      setLastNameInfoArray(transitions);
     } else {
       setLastNameInfoArray(null);
     }
