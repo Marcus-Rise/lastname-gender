@@ -2,7 +2,9 @@ import type { NextApiHandler } from "next";
 import { runMiddleware } from "../../src/server";
 import Cors from "cors";
 import type { ILastnameTransitionInfo } from "../../src/lastname";
+import { LastnameTransit } from "../../src/lastname";
 import { Form } from "multiparty";
+import fs from "fs";
 
 interface IFormDataFile {
   fieldName: string;
@@ -33,9 +35,27 @@ const LastnameTransitHandler: NextApiHandler<ILastnameTransitionInfo[]> = async 
     });
   });
 
-  console.debug(files);
+  const lastnames: string[] = [];
 
-  res.json([]);
+  await Promise.all(
+    files.map(async (i) => {
+      const fileData = await new Promise<string>((resolve, reject) =>
+        fs.readFile(i.path, "utf8", (err, data) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(data);
+          }
+        }),
+      );
+
+      lastnames.push(...fileData.split("\n").filter((lastname) => !!lastname));
+    }),
+  );
+
+  const transitions = lastnames.map((i) => LastnameTransit(i));
+
+  res.json(transitions);
 };
 
 const config = {
