@@ -2,18 +2,20 @@ import type { FC } from "react";
 import { useCallback, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import styles from "./last-name-form.module.scss";
-import { Button, InputFile, InputText } from "../../components";
+import { Button, InputCheckbox, InputFile, InputText } from "../../components";
+
+type ILastNameFormData = string | { file: File; resultAsFile: boolean };
 
 const LastNameForm: FC<{
-  onSubmit(data: string | File): void;
+  onSubmit(data: string | { file: File; resultAsFile: boolean }): void;
 }> = (props) => {
   const { control, handleSubmit } = useForm();
   const [files, setFiles] = useState<File[] | null>(null);
 
   const onSubmit = useCallback(
-    (data: { lastname: string }): void => {
+    (data: { lastname?: string; file?: string; returnFile: boolean }): void => {
       if (files) {
-        props.onSubmit(files[0]);
+        props.onSubmit({ file: files[0], resultAsFile: data.returnFile });
       } else {
         props.onSubmit(data.lastname);
       }
@@ -63,6 +65,22 @@ const LastNameForm: FC<{
           )}
         />
 
+        <Controller
+          name={"returnFile"}
+          defaultValue={false}
+          control={control}
+          render={({ name, value, onChange }) => (
+            <InputCheckbox
+              className={styles.inputResultFile}
+              name={name}
+              id={name}
+              checked={!!value}
+              onChange={() => onChange(!value)}
+              placeholder={"Отдать файлом"}
+            />
+          )}
+        />
+
         <Button className={styles.submit}>Узнать</Button>
       </div>
     </form>
@@ -70,3 +88,4 @@ const LastNameForm: FC<{
 };
 
 export { LastNameForm };
+export type { ILastNameFormData };
