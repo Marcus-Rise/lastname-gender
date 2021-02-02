@@ -4,14 +4,14 @@ import classNames from "classnames";
 import { useCallback, useMemo, useState } from "react";
 
 type IProps = InputHTMLAttributes<HTMLInputElement> & {
-  onChangeFiles(files: FileList): void;
+  onChangeFiles(files: File[]): void;
 };
 
 const InputFile: FC<IProps> = (props) => {
-  const [files, setFiles] = useState<FileList | null>(null);
+  const [files, setFiles] = useState<File[] | null>(null);
   const onChange: ChangeEventHandler<HTMLInputElement> = useCallback(
     (e) => {
-      const fileList = e.target.files;
+      const fileList = Array.from(e.target.files);
 
       setFiles(fileList);
       props.onChangeFiles(fileList);

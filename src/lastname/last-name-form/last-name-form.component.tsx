@@ -8,7 +8,7 @@ const LastNameForm: FC<{
   onSubmit(data: string | File): void;
 }> = (props) => {
   const { control, handleSubmit } = useForm();
-  const [files, setFiles] = useState<FileList | null>(null);
+  const [files, setFiles] = useState<File[] | null>(null);
 
   const onSubmit = useCallback(
     (data: { lastname: string }): void => {
@@ -21,7 +21,7 @@ const LastNameForm: FC<{
     [props, files],
   );
 
-  const selectFiles = useCallback((files: FileList) => {
+  const selectFiles = useCallback((files: File[]) => {
     setFiles(files);
   }, []);
 
